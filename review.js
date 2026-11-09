@@ -1,0 +1,10 @@
+/* 按本轮批注：手册连续阅读，组合确认只保留总览一屏。 */
+const pagedLibrary=libraryPage;
+libraryPage=function(readOnly){if(!readOnly)return pagedLibrary(false);const list=SKILLS.filter(s=>(S.filter==='all'||s.rarity===S.filter)&&(!S.query||(s.name+s.effect).includes(S.query)));return nav('技能手册','book-back')+`<section class="page book-page"><h2>每张卡，都是新战术。</h2><div class="filters">${['all','SSR','SR','R','N'].map(f=>`<button data-act="filter" data-filter="${f}" class="${S.filter===f?'active':''}">${f==='all'?'全部25':f}</button>`).join('')}</div><div class="book-list" aria-label="技能手册列表">${list.map(s=>`<button class="book-item" data-act="detail" data-id="${s.id}" aria-label="${s.name} ${s.rarity}"><div class="book-title"><span class="rarity-badge ${s.rarity}">${s.rarity}</span><strong>${s.name}</strong></div><p>${esc(s.effect)}</p><span class="book-timing ${s.rarity}">${s.triggerTime} →</span></button>`).join('')}</div></section>`;};
+checkPage=function(){const r=getReport();return nav(S.ruleOnly?'本局规则':'组合与规则确认',S.ruleOnly?'resume':'setup')+`<section class="page"><h2>${r.ok?'核对这局的四张技能。':'这组技能需要调整。'}</h2><p class="lead">点卡片查看完整规则，确认后开赛。</p>${compactHands()}<div class="opening-summary"><div><strong>开局比分</strong><p>正式开赛时统一生效</p></div><b class="opening">${r.opening.join(' : ')}</b></div>${r.ok?'<div class="pass">✓ 组合检查通过</div>':`<div class="compact-alert">${r.blocks.length}项规则冲突：${r.blocks.map(x=>esc(x.title)).join('；')}。请返回调整。</div>`}${footer(S.ruleOnly?action('返回比赛','resume'):action('双方确认 · 开始比赛','overview-start',!r.ok))}</section>`;};
+function overviewStart(){if(!getReport().ok)return;S.agreed=[true,true];S.ruleOnly=false;S.targets={};$('modal').innerHTML='';start();}
+const oldResultPage=resultPage;
+resultPage=function(){let html=oldResultPage();if(S.match.resultReason)html=html.replace('双方已确认结果',esc(S.match.resultReason));return html;};
+// 在原有捕获处理之前未匹配的动作，统一在这里处理。
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b||b.disabled)return;const a=b.dataset.act;if(a==='overview-start'){e.stopImmediatePropagation();overviewStart();}},true);
+render();

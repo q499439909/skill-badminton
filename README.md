@@ -6,6 +6,39 @@
 
 **[在线体验](https://q499439909.github.io/skill-badminton/)** · 手机与桌面浏览器均可打开，无需登录。
 
+## 扫码体验
+
+用手机扫描下方二维码即可打开交互体验版，也可以点击二维码直接进入。
+
+<p align="center">
+  <a href="https://q499439909.github.io/skill-badminton/">
+    <img src="assets/readme/experience-qr.png" width="220" alt="技能羽毛球在线体验二维码，指向 https://q499439909.github.io/skill-badminton/">
+  </a>
+</p>
+
+## 界面预览
+
+以下截图来自线上 Web 体验版的手机尺寸界面。
+
+<table>
+  <tr>
+    <th>首页与体验入口</th>
+    <th>双方独立选择自选或随机</th>
+  </tr>
+  <tr>
+    <td><img src="assets/readme/home.jpg" width="280" alt="首页，展示玩法说明、技能手册、胜局记录和开始新局入口"></td>
+    <td><img src="assets/readme/setup.jpg" width="280" alt="赛前选卡，双方分别选择自选或随机，每队获得两张技能"></td>
+  </tr>
+  <tr>
+    <th>比赛记分与技能状态</th>
+    <th>完整技能详情</th>
+  </tr>
+  <tr>
+    <td><img src="assets/readme/match.jpg" width="280" alt="比赛页，展示双方比分、加减分按钮、手牌状态和结算入口"></td>
+    <td><img src="assets/readme/skill-detail.jpg" width="280" alt="排球手技能详情，展示效果、发动时机、触发条件和使用提示"></td>
+  </tr>
+</table>
+
 ## 玩法与体验流程
 
 1. **双方独立选择获取方式**。A 队、B 队分别选择自主选卡或随机抽卡，支持一队自选、另一队随机。
